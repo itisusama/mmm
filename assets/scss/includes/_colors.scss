@@ -1,0 +1,35 @@
+@import 'variables';
+
+@function shade($color, $percent) {
+  @return mix(black, $color, $percent);
+}
+
+@mixin generate-color-classes($color-name, $color-value) {
+  // Generate default color classes
+  .m-bg-#{$color-name} {
+    background-color: $color-value;
+  }
+  .m-text-#{$color-name} {
+    color: $color-value;
+  }
+  .m-border-#{$color-name} {
+    border-color: $color-value;
+  }
+  
+  // Generate shaded color classes
+  @each $shade in $shades {
+    .m-bg-#{$color-name}-#{$shade} {
+      background-color: shade($color-value, $shade / 10);
+    }
+    .m-text-#{$color-name}-#{$shade} {
+      color: shade($color-value, $shade / 10);
+    }
+    .m-border-#{$color-name}-#{$shade} {
+      border-color: shade($color-value, $shade / 10);
+    }
+  }
+}
+
+@each $color-name, $color-value in $colors {
+  @include generate-color-classes($color-name, $color-value);
+}
