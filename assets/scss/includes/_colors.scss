@@ -13,7 +13,7 @@
     color: $color-value;
   }
   .m-border-#{$color-name} {
-    border-color: $color-value;
+    border: 1px solid $color-value;
   }
   
   // Generate shaded color classes

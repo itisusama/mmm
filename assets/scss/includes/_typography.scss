@@ -1,0 +1,22 @@
+// Define width classes
+@mixin width-classes {
+    @for $i from 1 through 100 {
+      .m-w#{$i} {
+        width: percentage($i/100);      
+      }
+    }
+  }
+  
+  // Define height classes
+  @mixin height-classes {
+    @for $i from 5 through 150 {
+      .m-h#{$i} {
+        height: #{1 * $i}vh;
+      }
+    }
+  }
+  
+  // Include mixins to generate classes
+  @include width-classes;
+  @include height-classes;
+  
